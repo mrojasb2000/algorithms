@@ -21,6 +21,23 @@ def mul_3_5(x: int) -> bool:
 def sum_functional(limit: int = 10) -> int:
     return sumr(until(limit, mul_3_5, 0))
 
-print(until(10, mul_3_5, 0))
+def sum_hybrid(limit: int = 10) -> int:
+    return sum(
+        n for n in range(1, limit)
+        if n % 3 == 0 or n % 5 == 0
+    )
 
-print(sum_functional())
+def next_(n: float, x: float) -> float:
+    return (x + n / x) / 2
+
+
+# print(until(10, mul_3_5, 0))
+
+# print(sum_functional())
+
+n = 2
+
+f = lambda x: next_(n, x)
+a0 = 1.0
+print([round(x, 4) for x in (a0, f(a0), f(f(a0)), f(f(f(a0))),)])
+
